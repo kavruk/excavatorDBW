@@ -40,9 +40,6 @@ void setup() {
 
 void loop() {
 
-
-
-
   while (targetPos > 0 && targetPos < MAX_STEPS && (analogRead(A4) > MIN_POS) && currentPos != targetPos) {
 
     if (currentPos > targetPos) {
@@ -75,8 +72,11 @@ void loop() {
   if (!digitalRead(pushButton3)) {
     targetPos = 3000;
   }
-
+  Serial.print("currentPos:");
   Serial.println(targetPos);
+  Serial.print("currentPos:");
+  Serial.println(currentPos);
+  Serial.print("encoder:");
   Serial.println(analogRead(A4));
   delay(10);        // delay in between reads for stability
 }
