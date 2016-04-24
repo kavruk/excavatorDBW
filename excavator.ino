@@ -77,5 +77,6 @@ void loop() {
   }
 
   Serial.println(targetPos);
+  Serial.println(analogRead(A4));
   delay(10);        // delay in between reads for stability
 }
