@@ -69,7 +69,7 @@ void loop() {
 
 
     // set the target according to buttons
-    targetPos = !digitalRead(pushButton1) * 1000 + !digitalRead(pushButton1) * 2000 + !digitalRead(pushButton1) * 3000;
+    targetPos = !digitalRead(pushButton1) * 1000 + !digitalRead(pushButton2) * 2000 + !digitalRead(pushButton3) * 3000;
     Serial.println(targetPos);
 
 
