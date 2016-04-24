@@ -44,11 +44,6 @@ void loop() {
 
 
   while (targetPos > 0 && targetPos < MAX_STEPS && (analogRead(A4) > MIN_POS) && currentPos != targetPos) {
-    // set the target according to buttons
-
-    targetPos = !digitalRead(pushButton1) * 1000 + !digitalRead(pushButton1) * 2000 + !digitalRead(pushButton1) * 3000;
-    Serial.println(targetPos);
-
 
     if (currentPos > targetPos) {
 
@@ -72,6 +67,10 @@ void loop() {
   }
 
 
+
+    // set the target according to buttons
+    targetPos = !digitalRead(pushButton1) * 1000 + !digitalRead(pushButton1) * 2000 + !digitalRead(pushButton1) * 3000;
+    Serial.println(targetPos);
 
 
   delay(10);        // delay in between reads for stability
