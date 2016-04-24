@@ -84,5 +84,3 @@ void loop() {
   Serial.println(analogRead(A4));
   delay(10);        // delay in between reads for stability
 }
-Status API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Pri
