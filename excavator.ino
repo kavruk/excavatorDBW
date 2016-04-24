@@ -65,13 +65,23 @@ void loop() {
       currentPos++;
     }
   }
-
-
-
-    // set the target according to buttons
-    targetPos = !digitalRead(pushButton1) * 1000 + !digitalRead(pushButton2) * 2000 + !digitalRead(pushButton3) * 3000;
-    Serial.println(targetPos);
-
-
+  // set the target according to buttons
+  if (!digitalRead(pushButton1)) {
+    pushButtonState1=HIGH;
+    pushButtonState2=LOW;
+    pushButtonState3=LOW;
+  }
+  if (!digitalRead(pushButton2)) {
+    pushButtonState1=LOW;
+    pushButtonState2=HIGH;
+    pushButtonState3=LOW;
+  }
+  if (!digitalRead(pushButton3)) {
+    pushButtonState1=LOW;
+    pushButtonState2=LOW;
+    pushButtonState3=HIGH;
+  }
+  targetPos = pushButtonState1 * 1000 + pushButtonState2 * 2000 + pushButtonState3 * 3000;
+  Serial.println(targetPos);
   delay(10);        // delay in between reads for stability
 }
