@@ -35,7 +35,7 @@ void setup() {
     delay(1);   //delay for reference point - BACK
   }
   
-  while (analogRead(A4) < MIN_POS) {
+  while (analogRead(A4) <= MIN_POS) {
     digitalWrite(dir_pin, LOW);
     digitalWrite(step_pin, HIGH);
     delay(1);
