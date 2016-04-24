@@ -7,9 +7,9 @@
 #define MIN_POS 0// Ref point
 #define MAX_POS 1023
 int buttonState = 0;
-#define pushButton1 A1;
-#define pushButton2 A2;
-#define pushButton3 A3;
+#define pushButton1 A1
+#define pushButton2 A2
+#define pushButton3 A3
 
 #define MAX_STEPS  4000//se va inmulti cu 1000
 int direction;    // Variable to set Rotation (CW-CCW) of the motor
@@ -66,7 +66,7 @@ void loop() {
   }
   // set the target according to buttons
   
-  targetPos=!digitalRead(pushbutton1)*1000;
+  targetPos=!digitalRead(pushButton1)*1000+!digitalRead(pushButton1)*2000+!digitalRead(pushButton1)*3000;
   Serial.println(targetPos);
 
 
