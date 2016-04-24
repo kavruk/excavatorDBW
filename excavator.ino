@@ -7,9 +7,9 @@
 #define MIN_POS 0// Ref point
 #define MAX_POS 1023
 int buttonState = 0;
-int pushButton1 = A1;
-int pushButton2 = A2;
-int pushButton3 = A3;
+#define pushButton1 A1;
+#define pushButton2 A2;
+#define pushButton3 A3;
 
 #define MAX_STEPS  4000//se va inmulti cu 1000
 int direction;    // Variable to set Rotation (CW-CCW) of the motor
@@ -64,22 +64,9 @@ void loop() {
       currentPos++;
     }
   }
-  // read the input pin:
- /*
-  int buttonState1 = digitalRead(pushButton1);
-  int buttonState2 = digitalRead(pushButton2);
-  int buttonState3 = digitalRead(pushButton3);
+  // set the target according to buttons
   
-  if (buttonState1 == LOW  )
-    buttonState=1000;
-     if (buttonState2 == LOW  )
-    buttonState=2000;
-      if (buttonState3 == LOW  )
-    buttonState=3000;
-    
-  // print out the state of the button:
-    targetPos = buttonState;
-  */
+  targetPos=!digitalRead(pushbutton1)*1000;
   Serial.println(targetPos);
 
 
