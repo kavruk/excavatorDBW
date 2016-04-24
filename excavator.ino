@@ -1,12 +1,4 @@
-//#include <Wire.h>
-#define DELAY_TIME 20
-//LiquidCrystal lcd(A7, A1, A2, A3, 11, A5);
-#define step_pin 6 // Steps pin on drv8825
-#define dir_pin 5  // Direction pin on drv8825
-#define SLEEP 7    // SLEEP pin on drv8825
-#define MIN_POS 80// Ref point
-#define MAX_POS 1023
-int buttonState = 0;
+#define pushButton0 A0
 #define pushButton1 A1
 #define pushButton2 A2
 #define pushButton3 A3
@@ -19,6 +11,7 @@ void setup() {
   pinMode(step_pin, OUTPUT);
   pinMode(SLEEP, OUTPUT);
   Serial.begin(9600);
+  pinMode(pushButton0, INPUT);
   pinMode(pushButton1, INPUT);
   pinMode(pushButton2, INPUT);
   pinMode(pushButton3, INPUT);
@@ -70,15 +63,19 @@ void loop() {
     }
   }
   // set the target according to buttons
-  if (!digitalRead(pushButton1)) {
+    if (!digitalRead(pushButton0)) {
     targetPos = 100;
-  }
-  if (!digitalRead(pushButton2)) {
+  } 
+  if (!digitalRead(pushButton1)) {
     targetPos = 200;
   }
-  if (!digitalRead(pushButton3)) {
+  if (!digitalRead(pushButton2)) {
     targetPos = 300;
   }
+  if (!digitalRead(pushButton3)) {
+    targetPos = 400;
+  }
+  
   Serial.print("currentPos:");
   Serial.println(targetPos);
   Serial.print("currentPos:");
@@ -87,3 +84,5 @@ void loop() {
   Serial.println(analogRead(A4));
   delay(10);        // delay in between reads for stability
 }
+Status API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Pri
