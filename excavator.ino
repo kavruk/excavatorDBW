@@ -22,12 +22,12 @@ void setup() {
   pinMode(pushButton1, INPUT);
   pinMode(pushButton2, INPUT);
   pinMode(pushButton3, INPUT);
- 
+
   Serial.setTimeout(2000);
   digitalWrite(SLEEP, HIGH);  // Wake up EasyDriver
   delay(5);  // Wait for EasyDriver wake up
 
-  while (analogRead(A4)>MIN_POS) {
+  while (analogRead(A4) > MIN_POS) {
     digitalWrite(dir_pin, HIGH);
     digitalWrite(step_pin, HIGH);
     delay(1);
@@ -42,8 +42,14 @@ void loop() {
 
 
 
- 
-  while (targetPos > 0 && targetPos < MAX_STEPS && (analogRead(A4)>MIN_POS) && currentPos != targetPos) {
+
+  while (targetPos > 0 && targetPos < MAX_STEPS && (analogRead(A4) > MIN_POS) && currentPos != targetPos) {
+    // set the target according to buttons
+
+    targetPos = !digitalRead(pushButton1) * 1000 + !digitalRead(pushButton1) * 2000 + !digitalRead(pushButton1) * 3000;
+    Serial.println(targetPos);
+
+
     if (currentPos > targetPos) {
 
       digitalWrite(dir_pin, HIGH);  // (HIGH = anti-clockwise / LOW = clockwise)
@@ -64,14 +70,9 @@ void loop() {
       currentPos++;
     }
   }
-  // set the target according to buttons
-  
-  targetPos=!digitalRead(pushButton1)*1000+!digitalRead(pushButton1)*2000+!digitalRead(pushButton1)*3000;
-  Serial.println(targetPos);
 
 
-  
-  
-  
+
+
   delay(10);        // delay in between reads for stability
 }
